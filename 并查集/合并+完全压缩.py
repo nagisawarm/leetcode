@@ -1,3 +1,5 @@
+nums = [1, 2, 3, 4]
+
 def union(x, y):
     xx = find(x)
     yy = find(y)
@@ -10,4 +12,13 @@ def union(x, y):
     if rank[xx] == rank[yy]:
         rank[yy] += 1
     size[yy] += size[xx]
-    
+
+def find(x):
+    if x != parent[x]:
+        parent[x] = find(parent[x])
+    return parent[x]
+
+m = len(nums)
+parent = {i: i for i in range(m)}
+rank = {i : 1 for i in range(m)}
+size = {i : 1 for i in range(m)}
